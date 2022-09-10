@@ -5,14 +5,18 @@ const nav = document.querySelector(".header"),
   sections = document.querySelectorAll("section[id]"),
   themeBtn = document.querySelector(".theme__toggle");
 
-hamBtn.addEventListener("click", (e) => {
-  navMenu.classList.toggle("show__menu");
-});
+  // Hamburger menu start
+  hamBtn.addEventListener("click", (e) => {
+    navMenu.classList.toggle("show__menu");
+  });
+  
+  navLinks.forEach((e) => {
+    e.addEventListener("click", () => navMenu.classList.remove("show__menu"));
+  });
+  // Hamburger menu start
 
-navLinks.forEach((e) => {
-  e.addEventListener("click", () => navMenu.classList.remove("show__menu"));
-});
 
+// Current section view in nav links 
 const scrollActive = () => {
   const scrollY = window.scrollY;
 
@@ -34,12 +38,16 @@ const scrollActive = () => {
 };
 window.addEventListener("scroll", scrollActive);
 
+
+// Shadow add to header after scroll 
 const scrollHeader = () => {
   if (window.scrollY >= 80) nav.classList.add("scroll__header");
   else nav.classList.remove("scroll__header");
 };
 window.addEventListener("scroll", scrollHeader);
 
+
+// Scroll to top button 
 function scrollUp() {
   const scrollUp = document.getElementById("scroll-up");
   // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
